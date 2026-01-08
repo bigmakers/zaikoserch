@@ -1,0 +1,90 @@
+:root {
+  color-scheme: light;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  background: #f5f7fb;
+  color: #1f2a44;
+}
+
+body {
+  margin: 0;
+  padding: 32px 16px;
+}
+
+.page {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
+}
+
+h1,
+h2 {
+  margin-top: 0;
+}
+
+.form {
+  margin-top: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+input {
+  flex: 1;
+  min-width: 220px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d2d7e2;
+  font-size: 16px;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #3b6ff6;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2d5bd1;
+}
+
+.result {
+  margin-top: 20px;
+  background: #f6f8ff;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.response {
+  font-size: 18px;
+  margin: 0;
+}
+
+.json-output,
+.prompt {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 16px;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 14px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
