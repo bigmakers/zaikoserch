@@ -48,6 +48,12 @@ input {
   font-size: 16px;
 }
 
+input[type="file"] {
+  flex: none;
+  padding: 8px 0;
+  border: none;
+}
+
 button {
   padding: 12px 20px;
   border: none;
@@ -72,6 +78,12 @@ button:hover {
 .response {
   font-size: 18px;
   margin: 0;
+}
+
+.hint {
+  margin: 8px 0 0;
+  color: #5b667a;
+  font-size: 14px;
 }
 
 .json-output,

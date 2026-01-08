@@ -11,10 +11,12 @@ const form = document.getElementById("inventory-form");
 const responseElement = document.getElementById("response");
 const jsonOutput = document.getElementById("json-output");
 const systemPrompt = document.getElementById("system-prompt");
+const csvUpload = document.getElementById("csv-upload");
 
 systemPrompt.textContent = SYSTEM_PROMPT;
 
 let inventory = [];
+let csvSourceLabel = "既定のCSV";
 
 fetch("data/inventory.csv")
   .then((res) => res.text())
@@ -25,6 +27,23 @@ fetch("data/inventory.csv")
     responseElement.textContent = "CSVの読み込みに失敗しました。";
   });
 
+csvUpload.addEventListener("change", async (event) => {
+  const file = event.target.files[0];
+  if (!file) {
+    return;
+  }
+
+  try {
+    const text = await file.text();
+    inventory = parseCsv(text);
+    csvSourceLabel = file.name;
+    responseElement.textContent = `${file.name} を読み込みました。医薬品名を入力してください。`;
+  } catch (error) {
+    console.error(error);
+    responseElement.textContent = "CSVの読み込みに失敗しました。";
+  }
+});
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const input = new FormData(form).get("medicine").toString().trim();
@@ -34,6 +53,7 @@ form.addEventListener("submit", (event) => {
   }
 
   const result = searchInventory(input, inventory);
+  result.csv_source = csvSourceLabel;
   jsonOutput.textContent = JSON.stringify(result, null, 2);
   responseElement.textContent = generateResponse(result);
 });
