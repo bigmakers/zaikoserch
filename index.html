@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>医薬品在庫検索</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="card">
+        <header>
+          <h1>医薬品在庫検索</h1>
+          <p>CSVに登録された医薬品の在庫数を検索します。</p>
+        </header>
+        <form id="inventory-form" class="form">
+          <label for="medicine">医薬品名</label>
+          <div class="row">
+            <input
+              id="medicine"
+              name="medicine"
+              type="text"
+              placeholder="例: アセトアミノフェン"
+              autocomplete="off"
+              required
+            />
+            <button type="submit">検索</button>
+          </div>
+          <label for="csv-upload">CSVファイルをアップロード</label>
+          <input id="csv-upload" name="csv-upload" type="file" accept=".csv" />
+          <p class="hint">※アップロードがない場合は、既定のCSVを使用します。</p>
+        </form>
+        <section class="result">
+          <h2>検索結果</h2>
+          <p id="response" class="response">医薬品名を入力してください。</p>
+        </section>
+      </section>
+      <section class="card">
+        <h2>在庫検索ツールの応答 (JSON)</h2>
+        <pre id="json-output" class="json-output">{}</pre>
+      </section>
+      <section class="card">
+        <details>
+          <summary>システムプロンプト</summary>
+          <pre id="system-prompt" class="prompt"></pre>
+        </details>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
